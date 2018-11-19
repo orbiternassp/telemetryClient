@@ -1,36 +1,4 @@
-head	1.3;
-access;
-symbols;
-locks; strict;
-comment	@ * @;
-
-
-1.3
-date	2008.10.16.05.48.33;	author movieman523;	state Exp;
-branches;
-next	1.2;
-
-1.2
-date	2008.10.15.03.36.16;	author movieman523;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2007.01.02.01.54.42;	author dseagrav;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.3
-log
-@More telemetry.
-@
-text
-@#pragma once
+#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -896,60 +864,4 @@ namespace GroundStation
 		}		
 
 };
-}@
-
-
-1.2
-log
-@Made it build in VC2008.
-@
-text
-@d50 6
-a55 6
-	private: System::Windows::Forms::TextBox *  s22A3;
-	private: System::Windows::Forms::TextBox *  s22A1;
-	private: System::Windows::Forms::TextBox *  s22A2;
-	private: System::Windows::Forms::TextBox *  s51A7;
-	private: System::Windows::Forms::TextBox *  s51A8;
-	private: System::Windows::Forms::TextBox *  s51A9;
-d83 26
-a108 26
-	private: System::Windows::Forms::TextBox *  s10A108;
-	private: System::Windows::Forms::TextBox *  s10A111;
-	private: System::Windows::Forms::TextBox *  s10A104;
-	private: System::Windows::Forms::TextBox *  s10A106;
-
-	private: System::Windows::Forms::TextBox *  s10A110;
-	private: System::Windows::Forms::TextBox *  s10A109;
-	private: System::Windows::Forms::TextBox *  s10A107;
-	private: System::Windows::Forms::TextBox *  s11D18;
-	private: System::Windows::Forms::TextBox *  s11D17;
-	private: System::Windows::Forms::TextBox *  s11D12;
-	private: System::Windows::Forms::TextBox *  s11D11;
-	private: System::Windows::Forms::TextBox *  s11D10;
-	private: System::Windows::Forms::TextBox *  s11D7;
-	private: System::Windows::Forms::TextBox *  s11D6;
-	private: System::Windows::Forms::TextBox *  s11D5;
-	private: System::Windows::Forms::TextBox *  s11D3;
-	private: System::Windows::Forms::TextBox *  s11D16;
-	private: System::Windows::Forms::TextBox *  s10A122;
-	private: System::Windows::Forms::TextBox *  s10A121;
-	private: System::Windows::Forms::TextBox *  s10A119;
-	private: System::Windows::Forms::TextBox *  s10A118;
-	private: System::Windows::Forms::TextBox *  s10A116;
-	private: System::Windows::Forms::TextBox *  s10A115;
-	private: System::Windows::Forms::TextBox *  s10A113;
-	private: System::Windows::Forms::TextBox *  s10A112;
-@
-
-
-1.1
-log
-@Initial Commit
-@
-text
-@d28 1
-a28 1
-			this->add_Closing(new CancelEventHandler(this,CrewForm_Closing));
-@
-
+}

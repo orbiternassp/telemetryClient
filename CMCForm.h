@@ -1,31 +1,4 @@
-head	1.2;
-access;
-symbols;
-locks; strict;
-comment	@ * @;
-
-
-1.2
-date	2008.10.15.03.36.16;	author movieman523;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2007.01.02.01.54.42;	author dseagrav;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.2
-log
-@Made it build in VC2008.
-@
-text
-@#pragma once
+#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -4882,16 +4855,5 @@ private: System::Windows::Forms::Label *  label184;
 			this->ResumeLayout(false);
 		}				
 };
-}@
-
-
-1.1
-log
-@Initial Commit
-@
-text
-@d28 1
-a28 1
-			this->add_Closing(new CancelEventHandler(this,CMCForm_Closing));
-@
+}
 
