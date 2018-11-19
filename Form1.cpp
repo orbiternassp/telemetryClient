@@ -230,6 +230,24 @@ void Form1::showTempF( textDisplay *tb, unsigned char data, double low, double h
 	showValue( tb, msg );
 }
 
+void Form1::showEvent( textDisplay *tb, unsigned char data, int bit)
+{
+	char msg[64];
+	char *sFormat;
+
+	if (data & bit)
+	{
+		sFormat = "1111";
+	}
+	else
+	{
+		sFormat = "0000";
+	}
+
+	sprintf(msg, sFormat);
+	showValue( tb, msg );
+}
+
 void Form1::display(unsigned char data, int channel, int type, int ccode)
 {
 	char msg[256];
@@ -1416,6 +1434,26 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			}
 			break;
 		}
+		break;
+	case TLM_DP:
+	case TLM_E:
+		switch(channel){
+			case 10: // S10A
+				
+				break;
+			case 11: // S11A
+				switch(ccode)
+				{
+				case 22: //11DP22
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E221, data, 1);
+					}
+					break;
+				}
+				break;
+		}
+		break;
 	}
 }
 
@@ -3769,7 +3807,29 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 		case 13: // 51DP2 UP-DATA-LINK VALIDITY BITS (4 BITS)
 		case 33:
 			break;
+		case 14:
+			switch(framect)
+			{
+				case 0: // 10A123 FC 2 COND EXH TEMP
+					display( data, 10, TLM_A, 123 );
+					break;
 
+				case 1: // 10A126 FC 1 RAD OUT TEMP
+					display( data, 10, TLM_A, 126 );
+					break;
+			}
+			break;
+		case 34:
+			switch(framect)
+			{
+				case 0: //11DP3 SCI EXP #17
+					display( data, 11, TLM_DP, 3 );
+					break;
+				case 4: //11DP22
+					display( data, 11, TLM_DP, 22 );
+					break;
+			}
+			break;
 	}
 }
 
