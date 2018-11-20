@@ -1444,10 +1444,74 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 11: // S11A
 				switch(ccode)
 				{
+				case 13: //11DP13
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E133, data, 04);
+						showEvent( els_form->s11E134, data, 010);
+						showEvent( els_form->s11E136, data, 040);
+						showEvent( els_form->s11E137, data, 0100);
+					}
+					break;
+				case 14: //11DP14
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E141, data, 01);
+						showEvent( els_form->s11E142, data, 02);
+						showEvent( els_form->s11E144, data, 010);
+					}
+					break;
+				case 15: //11DP15
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E156, data, 040);
+						showEvent( els_form->s11E157, data, 0100);
+					}
+					break;
 				case 22: //11DP22
 					if ( els_form != NULL)
 					{
-						showEvent( els_form->s11E221, data, 1);
+						showEvent( els_form->s11E221, data, 01);
+						showEvent( els_form->s11E223, data, 04);
+						showEvent( els_form->s11E225, data, 020);
+						showEvent( els_form->s11E227, data, 0100);
+					}
+					break;
+				case 23: //11DP23
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E231, data, 01);
+						showEvent( els_form->s11E233, data, 04);
+						showEvent( els_form->s11E235, data, 020);
+						showEvent( els_form->s11E237, data, 0100);
+					}
+					break;
+				case 24: //11DP24
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E241, data, 01);
+					}
+					break;
+				case 26: //11DP26
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E265, data, 020);
+					}
+					break;
+				case 29: //11DP29
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E291, data, 01);
+						showEvent( els_form->s11E295, data, 020);
+						showEvent( els_form->s11E298, data, 0200);
+					}
+					break;
+					case 30: //11DP30
+					if ( els_form != NULL)
+					{
+						showEvent( els_form->s11E303, data, 04);
+						showEvent( els_form->s11E306, data, 040);
+						showEvent( els_form->s11E308, data, 0200);
 					}
 					break;
 				}
@@ -1996,6 +2060,44 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			display( data, 10, TLM_A, 1+(framect*3) );
 			break;
 
+		case 64:
+			switch(framead){
+			case 2: //11DP13
+				display( data, 11, TLM_DP, 13 );
+				break;
+			}
+			break;
+		case 65:
+			switch(framead){
+			case 2: //11DP14
+				display( data, 11, TLM_DP, 14 );
+				break;
+			}
+			break;
+		case 66:
+			switch(framead){
+			case 2: //11DP15
+				display( data, 11, TLM_DP, 15 );
+				break;
+			case 3: //11DP22
+				display( data, 11, TLM_DP, 22 );
+				break;
+			case 4: //11DP29
+				display( data, 11, TLM_DP, 29 );
+				break;
+			}
+			break;
+		case 67:
+			switch(framead){
+			case 3: //11DP23
+				display( data, 11, TLM_DP, 23 );
+				break;
+			case 4: //11DP30
+				display( data, 11, TLM_DP, 30 );
+				break;
+			}
+			break;
+
 		case 72:
 			switch(framead){
 			case 2:	// BAT BUS A VOLTS
@@ -2031,6 +2133,21 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// ...
 			// 10A149
 			display( data, 10, TLM_A, 2+(framect*3) );
+			break;
+
+		case 96:
+			switch(framead){
+			case 3: //11DP24
+				display( data, 11, TLM_DP, 24 );
+				break;
+			}
+			break;
+		case 98:
+			switch(framead){
+			case 3: //11DP26
+				display( data, 11, TLM_DP, 26 );
+				break;
+			}
 			break;
 
 		case 115: // MAGICAL WORD 3
@@ -3664,15 +3781,27 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 {
 	switch(bytect){
 		case 0: // SYNC 1
-			if(data != 05){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+			switch(framect){
+			case 0:
+				if(data != 05){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+				break;
+			}
 			break;
 
 		case 1: // SYNC 2
-			if(data != 0171){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+			switch(framect){
+			case 0:
+				if(data != 0171){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+				break;
+			}
 			break;
 
 		case 2: // SYNC 3
-			if(data != 0267){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+			switch(framect){
+			case 0:
+				if(data != 0267){ end_lbr(); lock_type = 0; cmc_lock_type = 0; }
+				break;
+			}
 			break;
 
 		case 3: // FRAME COUNT
@@ -3819,14 +3948,39 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 					break;
 			}
 			break;
+		case 20:
+			switch(framect)
+			{
+				case 3: //11DP15
+					display( data, 11, TLM_DP, 15 );
+					break;
+			}
+			break;
 		case 34:
 			switch(framect)
 			{
 				case 0: //11DP3 SCI EXP #17
 					display( data, 11, TLM_DP, 3 );
 					break;
+				case 2: //11DP13
+					display( data, 11, TLM_DP, 13 );
+					break;
+				case 3: //11DP29
+					display( data, 11, TLM_DP, 29 );
+					break;
 				case 4: //11DP22
 					display( data, 11, TLM_DP, 22 );
+					break;
+			}
+			break;
+		case 35:
+			switch(framect)
+			{
+				case 2: //11DP14
+					display( data, 11, TLM_DP, 14 );
+					break;
+				case 4: //11DP23
+					display( data, 11, TLM_DP, 23 );
 					break;
 			}
 			break;
