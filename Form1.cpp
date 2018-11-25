@@ -527,6 +527,13 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 60: // H2 TK 1 TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A60, data,  -425, 200 );							
+				}
+				break;
+
 			case 61: // NUCLEAR PARTICLE DETECTOR TEMP
 				if ( tcm_form != NULL )
 				{
@@ -626,6 +633,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				break;
 
 			case 83: // PIPA +120 VDC
+				break;
 
 			case 84: // CABIN TEMP
 				if ( ecs_form != NULL )
@@ -643,10 +651,24 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 86: // INVERTER 1 TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A86, data,  32, 248 );			
+				}
+				break;
+
 			case 88: // INVERTER 2 TEMP
 				if ( eps_form != NULL )
 				{
 					showTempF( eps_form->s10A88, data,  32, 248 );			
+				}
+				break;
+
+			case 89: // INVERTER 3 TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A89, data,  32, 248 );			
 				}
 				break;
 
@@ -764,10 +786,80 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 123: // FC 2 COND EXH TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A123, data,  145, 250 );							
+				}
+				break;
+
+			case 126: // FC 1 RAD OUT TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A126, data,  -50, 300 );							
+				}
+				break;
+
+			case 129: // FC 2 RAD OUT TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A129, data,  -50, 300 );							
+				}
+				break;
+
+			case 130: // FC 1 RAD IN TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A130, data,  -50, 300 );		
+				}
+				break;
+
+			case 131: // FC 2 RAD IN TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A131, data,  -50, 300 );		
+				}
+				break;
+
+			case 132: // FC 3 RAD OUT TEMP
+				if ( eps_form != NULL )
+				{
+					showTempF( eps_form->s10A132, data,  -50, 300 );							
+				}
+				break;
+
 			case 136: // SM ENG PKG A TEMP
 				if ( sps_form != NULL )
 				{
 					showTempF( sps_form->s10A136, data,  0, 300 );							
+				}
+				break;
+
+			case 141: // H2 TK 1 QTY
+				if ( eps_form != NULL )
+				{
+					showPercentage( eps_form->s10A141, data );
+				}
+				break;
+
+			case 144: // H2 TK 2 QTY
+				if ( eps_form != NULL )
+				{
+					showPercentage( eps_form->s10A144, data );
+				}
+				break;
+
+			case 147: // O2 TK 1 QTY
+				if ( eps_form != NULL )
+				{
+					showPercentage( eps_form->s10A147, data );
+				}
+				break;
+
+			case 150: // O2 TK 1 PRESS
+				if ( eps_form != NULL )
+				{
+					showPSIA( eps_form->s10A150, data,  50, 1050 );							
 				}
 				break;
 			}
@@ -891,6 +983,27 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 29: // 11A29 FC 1 N2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A29, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 30: // 11A30 FC 2 N2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A30, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 35: // 11A35 FC 3 N2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A35, data,  0.0, 75.0 );
+				}
+				break;
+
 			case 37:  // 11A37 SUIT-CABIN DELTA PRESS
 				if( ecs_form != NULL )
 				{
@@ -999,6 +1112,15 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 56: // 11A56 AC BUS 2 PH A VOLTS
+				if ( eps_form != NULL )
+				{
+					value = unscale_data(data,0,150);
+					sprintf(msg,"%03.2f V",value);
+					showValue( eps_form->s11A56, msg );
+				}
+				break;
+
 			case 57: // MAIN BUS A VOLTS
 				if ( eps_form != NULL )
 				{
@@ -1014,6 +1136,48 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 					value = unscale_data(data,0,45);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( eps_form->s11A58, msg );						
+				}
+				break;
+
+			case 67: //FC 1 O2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A67, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 68: //FC 2 O2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A68, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 69: //FC 3 O2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A69, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 70: //FC 1 H2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A70, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 71: //FC 2 H2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A71, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 72: //FC 3 H2 PRESS
+				if ( eps_form )
+				{
+					showPSIA( eps_form->s11A72, data,  0.0, 75.0 );
 				}
 				break;
 
@@ -1496,6 +1660,14 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 					if ( els_form != NULL)
 					{
 						showEvent( els_form->s11E265, data, 020);
+					}
+					break;
+				case 28: //11DP28
+					if (eps_form != NULL)
+					{
+						showEvent( eps_form->s11E281, data, 01);
+						showEvent( eps_form->s11E282, data, 02);
+						showEvent( eps_form->s11E283, data, 04);
 					}
 					break;
 				case 29: //11DP29
@@ -2072,6 +2244,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			case 2: //11DP14
 				display( data, 11, TLM_DP, 14 );
 				break;
+			case 4: //11DP28
+				display( data, 11, TLM_DP, 28 );
+				break;
 			}
 			break;
 		case 66:
@@ -2102,6 +2277,14 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			switch(framead){
 			case 2:	// BAT BUS A VOLTS
 				display( data, 11, TLM_A, 91 );
+				break;
+			}
+			break;
+
+		case 73:
+			switch(framead){
+			case 1: // AC BUS 2 PH A VOLTS
+				display( data, 11, TLM_A, 56 );
 				break;
 			}
 			break;
@@ -2150,6 +2333,38 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			}
 			break;
 
+		case 105:
+			switch(framead){
+			case 0: // FC 1 N2 PRESS
+				display( data, 11, TLM_A, 29 );
+				break;
+			}
+			break;
+
+		case 106:
+			switch(framead){
+			case 0: // FC 2 N2 PRESS
+				display( data, 11, TLM_A, 30 );
+				break;
+			}
+			break;
+
+		case 107:
+			switch(framead){
+			case 1: // FC 1 O2 PRESS
+				display( data, 11, TLM_A, 67 );
+				break;
+			}
+			break;
+
+		case 112:
+			switch(framead){
+			case 1: // FC 2 O2 PRESS
+				display( data, 11, TLM_A, 68 );
+				break;
+			}
+			break;
+
 		case 115: // MAGICAL WORD 3
 			// 10A3
 			// 10A6
@@ -2157,6 +2372,41 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// ...
 			// 10A150
 			display( data, 10, TLM_A, 3+(framect*3) );
+			break;
+
+		case 120:
+			switch(framead){
+			case 1: // FC 3 O2 PRESS
+				display( data, 11, TLM_A, 69 );
+				break;
+			}
+			break;
+
+		case 121:
+			switch(framead){
+			case 1: // FC 1 H2 PRESS
+				display( data, 11, TLM_A, 70 );
+				break;
+			}
+			break;
+
+		case 122:
+			switch(framead){
+			case 0: // FC 3 N2 PRESS
+				display( data, 11, TLM_A, 35 );
+				break;
+			case 1: // FC 2 H2 PRESS
+				display( data, 11, TLM_A, 71 );
+				break;
+			}
+			break;
+
+		case 123:
+			switch(framead){
+			case 1: // FC 3 H2 PRESS
+				display( data, 11, TLM_A, 72 );
+				break;
+			}
 			break;
 	}
 }
@@ -3946,6 +4196,71 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 				case 1: // 10A126 FC 1 RAD OUT TEMP
 					display( data, 10, TLM_A, 126 );
 					break;
+
+				case 2: // 10A129 FC 2 RAD OUT TEMP
+					display( data, 10, TLM_A, 129 );
+					break;
+
+				case 3: // 10A132 FC 3 RAD OUT TEMP
+					display( data, 10, TLM_A, 132 );
+					break;
+			}
+			break;
+		case 15:
+			switch(framect)
+			{
+				case 1: // 10A141 H2 TK 1 QTY
+					display( data, 10, TLM_A, 141 );
+					break;
+				case 2: // 10A144 H2 TK 2 QTY
+					display( data, 10, TLM_A, 144 );
+					break;
+				case 3: // 10A147 O2 TK 1 QTY
+					display( data, 10, TLM_A, 147 );
+					break;
+				case 4: // 10A150 O2 TK 1 PRESS
+					display( data, 10, TLM_A, 150 );
+					break;
+			}
+			break;
+		case 18:
+			switch(framect)
+			{
+				case 0: // 10A33
+					display( data, 10, TLM_A, 33 );
+					break;
+				case 1: // 10A36 H2 TK 1 PRESS
+					display( data, 10, TLM_A, 36 );
+					break;
+				case 2: // 10A39 H2 TK 2 PRESS
+					display( data, 10, TLM_A, 39 );
+					break;
+				case 3: // 10A42
+					display( data, 10, TLM_A, 42 );
+					break;
+				case 4: // 10A45
+					display( data, 10, TLM_A, 45 );
+					break;
+			}
+			break;
+		case 19:
+			switch(framect)
+			{
+				case 0: // 10A48
+					display( data, 10, TLM_A, 48 );
+					break;
+				case 1: // 10A51 FC 1 COND EXH TEMP
+					display( data, 10, TLM_A, 51 );
+					break;
+				case 2: // 10A54 O2 TK 1 TEMP
+					display( data, 10, TLM_A, 54 );
+					break;
+				case 3: // 10A57 O2 TK 2 TEMP
+					display( data, 10, TLM_A, 57 );
+					break;
+				case 4: // 10A60 H2 TK 1 TEMP
+					display( data, 10, TLM_A, 60 );
+					break;
 			}
 			break;
 		case 20:
@@ -3953,6 +4268,69 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 			{
 				case 3: //11DP15
 					display( data, 11, TLM_DP, 15 );
+					break;
+			}
+			break;
+		case 21:
+			switch(framect)
+			{
+				case 2: //11DP28
+					display( data, 11, TLM_DP, 28 );
+					break;
+			}
+			break;
+		case 22:
+			switch(framect)
+			{
+				case 0: // 11A73 BAT CHGR
+					display( data, 11, TLM_A, 73 );
+					break;
+				case 1: // 11A147 AC BUS 1 PA VOLTS
+					display( data, 11, TLM_A, 147 );
+					break;
+				case 2: // 11A84 FC 2 CUR
+					display( data, 11, TLM_A, 84 );
+					break;
+			}
+			break;
+		case 23:
+			switch(framect)
+			{
+				case 2: // 11A85 FC 3 CUR
+					display( data, 11, TLM_A, 85 );
+					break;
+			}
+			break;
+		case 25:
+			switch(framect)
+			{
+				case 0: // 11A74 BAT A CUR
+					display( data, 11, TLM_A, 74 );
+					break;
+				case 3: // 11A56 AC BUS 2 PA VOLTS
+					display( data, 11, TLM_A, 56 );
+					break;
+			}
+			break;
+		case 26:
+			switch(framect)
+			{
+				case 0: // 11A75 BAT RELAY BUS VOLTS
+					display( data, 11, TLM_A, 75 );
+					break;
+				case 3: // 11A57 MAIN BUS A VOLTS
+					display( data, 11, TLM_A, 57 );
+					break;
+			}
+			break;
+		case 27:
+			switch(framect)
+			{
+				case 0: // 11A76 FC 1 CUR
+					display( data, 11, TLM_A, 76 );
+					break;
+				case 3: // 11A58 MAIN BUS B VOLTS
+					display( data, 11, TLM_A, 58 );
 					break;
 			}
 			break;
@@ -3981,6 +4359,34 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 					break;
 				case 4: //11DP23
 					display( data, 11, TLM_DP, 23 );
+					break;
+			}
+			break;
+		case 36:
+			switch(framect)
+			{
+				case 0: //10A63 H2 TK 2 TEMP
+					display( data, 10, TLM_A, 63 );
+					break;
+				case 1: //10A66 O2 TK 2 PRESS
+					display( data, 10, TLM_A, 66 );
+					break;
+				case 2: //10A69 FC 3 COND EXH TEMP
+					display( data, 10, TLM_A, 69 );
+					break;
+				case 3: //10A72 FC 1 SKIN TEMP
+					display( data, 10, TLM_A, 72 );
+					break;
+				case 4: //10A75 FC 2 SKIN TEMP
+					display( data, 10, TLM_A, 75 );
+					break;
+			}
+			break;
+		case 37:
+			switch(framect)
+			{
+				case 0: //10A78 FC 3 SKIN TEMP
+					display( data, 10, TLM_A, 78 );
 					break;
 			}
 			break;
