@@ -100,9 +100,9 @@ namespace GroundStation
 	private: System::Windows::Forms::Label *  label29;
 	private: System::Windows::Forms::Label *  label30;
 	private: System::Windows::Forms::Label *  label31;
-	private: System::Windows::Forms::TextBox *  s10A135;
-	private: System::Windows::Forms::TextBox *  s10A114;
-	private: System::Windows::Forms::TextBox *  s11E4_8;
+	public: System::Windows::Forms::TextBox *  s10A135;
+	public: System::Windows::Forms::TextBox *  s10A114;
+	public: System::Windows::Forms::TextBox *  s11E4_8;
 
 
 

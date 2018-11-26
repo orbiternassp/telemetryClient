@@ -164,6 +164,23 @@ double Form1::unscale_data( unsigned char data, double low, double high )
 	return ( data * step ) + low;
 }
 
+//unscale quadratic PCM data
+double Form1::unscale_data_sq( unsigned char data, double low, double high )
+{
+	if ( data == 0 )
+	{    
+		return low;
+	}
+
+	if ( data == 0xFF )
+	{
+		return high;
+	}
+
+	double step = ( ( high - low ) / 256.0 / 256.0);
+	return ( data * data * step ) + low;
+}
+
 void Form1::showValue( textDisplay *tb, char *msg )
 {
 	tb->Text = msg;
@@ -262,7 +279,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 3: // CO2 PARTIAL PRESS
 				if ( ecs_form != NULL )
 				{
-					value = unscale_data(data, 0.0, 30.0);
+					value = unscale_data_sq(data, 0.0, 30.0);
 					sprintf(msg,"%04.1f MM",value);
 					showValue( ecs_form->s10A3, msg );				
 				}
@@ -285,7 +302,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 8:	// SEC EVAP OUT STEAM PRESS
 				if ( ecs_form != NULL )
 				{
-					showPSIA( ecs_form->s10A8, data,  0.5, 0.25 );			
+					showPSIA( ecs_form->s10A8, data,  0.05, 0.25 );			
 				}
 				break;
 
@@ -658,6 +675,14 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 87: // SEC RAD IN TEMP
+				if ( ecs_form != NULL )
+				{
+					showTempF( ecs_form->s10A87, data,  55, 120 );			
+				}
+				break;
+
+
 			case 88: // INVERTER 2 TEMP
 				if ( eps_form != NULL )
 				{
@@ -669,6 +694,13 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( eps_form != NULL )
 				{
 					showTempF( eps_form->s10A89, data,  32, 248 );			
+				}
+				break;
+
+			case 90: // SEC RAD OUT TEMP
+				if ( ecs_form != NULL )
+				{
+					showTempF( ecs_form->s10A90, data,  30, 70 );			
 				}
 				break;
 
@@ -741,6 +773,13 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( crw_form != NULL )
 				{
 					showSci( crw_form->s10A113, data );					
+				}
+				break;
+
+			case 114: // H2O DUMP TEMP
+				if ( ecs_form != NULL )
+				{
+					showTempF( ecs_form->s10A114, data,  0, 100 );			
 				}
 				break;
 
@@ -825,6 +864,20 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( eps_form != NULL )
 				{
 					showTempF( eps_form->s10A132, data,  -50, 300 );							
+				}
+				break;
+
+			case 133: // GLY EVAP OUT STEAM TEMP
+				if ( ecs_form != NULL )
+				{
+					showTempF( ecs_form->s10A133, data,  20, 95 );							
+				}
+				break;
+
+			case 135: // URINE DUMP NOZZLE TEMP
+				if ( ecs_form != NULL )
+				{
+					showTempF( ecs_form->s10A135, data,  0, 100 );			
 				}
 				break;
 
@@ -1112,6 +1165,15 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 55: // O2 SUPPLY MANF PRESS
+				if ( ecs_form != NULL )
+				{
+					value = unscale_data(data,0,150);
+					sprintf(msg,"%04.0f PSIG",value);
+					showValue( ecs_form->s11A55, msg );		
+				}
+				break;
+
 			case 56: // 11A56 AC BUS 2 PH A VOLTS
 				if ( eps_form != NULL )
 				{
@@ -1379,6 +1441,15 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 129: // 11A129 SEC GLY ACCUM QTY
+				if ( ecs_form != NULL )
+				{
+					value = unscale_data(data, 0, 100);
+					sprintf(msg,"%05.2f %",value);
+					showValue( ecs_form->s11A129, msg );						
+				}
+				break;
+
 			case 147: // 11A147 AC BUS 1 PH A VOLTS
 				if ( eps_form != NULL )
 				{
@@ -1433,7 +1504,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
-			case 157:
+			case 157: //11A157 SEC GLY PUMP OUT PRESS
 				if ( ecs_form != NULL )
 				{
 					value = unscale_data(data, 0, 60);
@@ -1608,6 +1679,18 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 11: // S11A
 				switch(ccode)
 				{
+				case 4: //11DP4
+					if (els_form != NULL)
+					{
+						showEvent( els_form->s11E43, data, 04);
+						showEvent( els_form->s11E45, data, 020);
+						showEvent( els_form->s11E46, data, 040);
+					}
+					if (ecs_form != NULL)
+					{
+						showEvent( ecs_form->s11E4_8, data, 0200);
+					}
+					break;
 				case 13: //11DP13
 					if ( els_form != NULL)
 					{
@@ -2275,6 +2358,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 		case 72:
 			switch(framead){
+			case 1:	// O2 SUPPLY MANF PRESS
+				display( data, 11, TLM_A, 55 );
+				break;
 			case 2:	// BAT BUS A VOLTS
 				display( data, 11, TLM_A, 91 );
 				break;
@@ -2297,6 +2383,10 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 			case 2: // BAT BUS B VOLTS
 				display( data, 11, TLM_A, 93 );
+				break;
+
+			case 3: // SEC GLY ACCUM QUANTITY
+				display( data, 11, TLM_A, 129 );
 				break;
 			}
 			break;
@@ -2325,6 +2415,15 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 				break;
 			}
 			break;
+
+		case 97:
+			switch(framead){
+			case 0: //11DP4
+				display( data, 11, TLM_DP, 4 );
+				break;
+			}
+			break;
+
 		case 98:
 			switch(framead){
 			case 3: //11DP26
@@ -4204,6 +4303,9 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 				case 3: // 10A132 FC 3 RAD OUT TEMP
 					display( data, 10, TLM_A, 132 );
 					break;
+				case 4: // 10A135 URINE DUMP NOZZLE TEMP
+					display( data, 10, TLM_A, 135 );
+					break;
 			}
 			break;
 		case 15:
@@ -4223,6 +4325,26 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 					break;
 			}
 			break;
+		case 16:
+			switch(framect)
+			{
+				case 0: // 10A3 CO2 PARTIAL PRESS
+					display( data, 10, TLM_A, 3 );
+					break;
+				case 1: // 10A6 CABIN PRESS
+					display( data, 10, TLM_A, 6 );
+					break;
+				case 2: // 10A9 WASTE H2O QTY
+					display( data, 10, TLM_A, 9 );
+					break;
+				case 3: // 10A12 GLY EVAP OUT TEMP
+					display( data, 10, TLM_A, 12 );
+					break;
+				case 4: // 10A15 ECS RAD OUT TEMP
+					display( data, 10, TLM_A, 15 );
+					break;
+			}
+			break;
 		case 18:
 			switch(framect)
 			{
@@ -4238,7 +4360,7 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 				case 3: // 10A42
 					display( data, 10, TLM_A, 42 );
 					break;
-				case 4: // 10A45
+				case 4: // 10A45 SUIT AIR HX OUT TEMP
 					display( data, 10, TLM_A, 45 );
 					break;
 			}
@@ -4246,7 +4368,7 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 		case 19:
 			switch(framect)
 			{
-				case 0: // 10A48
+				case 0: // 10A48 PRI RAD IN TEMP
 					display( data, 10, TLM_A, 48 );
 					break;
 				case 1: // 10A51 FC 1 COND EXH TEMP
@@ -4285,11 +4407,14 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 				case 0: // 11A73 BAT CHGR
 					display( data, 11, TLM_A, 73 );
 					break;
-				case 1: // 11A147 AC BUS 1 PA VOLTS
+				case 1: // 11A147 AC BUS 1 PH A VOLTS
 					display( data, 11, TLM_A, 147 );
 					break;
 				case 2: // 11A84 FC 2 CUR
 					display( data, 11, TLM_A, 84 );
+					break;
+				case 4: // 11A129 SEC GLY ACCUM QUANTITY
+					display( data, 11, TLM_A, 129 );
 					break;
 			}
 			break;
@@ -4298,6 +4423,14 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 			{
 				case 2: // 11A85 FC 3 CUR
 					display( data, 11, TLM_A, 85 );
+					break;
+			}
+			break;
+		case 24:
+			switch(framect)
+			{
+				case 3: // 11A55 O2 SUPPLY MANF PRESS
+					display( data, 11, TLM_A, 55 );
 					break;
 			}
 			break;
@@ -4328,6 +4461,9 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 			{
 				case 0: // 11A76 FC 1 CUR
 					display( data, 11, TLM_A, 76 );
+					break;
+				case 1: // 11A13 GLY ACCUM QTY
+					display( data, 11, TLM_A, 13 );
 					break;
 				case 3: // 11A58 MAIN BUS B VOLTS
 					display( data, 11, TLM_A, 58 );
@@ -4385,8 +4521,28 @@ void Form1::parse_lbr(unsigned char data, int bytect)
 		case 37:
 			switch(framect)
 			{
-				case 0: //10A78 FC 3 SKIN TEMP
+				case 0: // 10A78 FC 3 SKIN TEMP
 					display( data, 10, TLM_A, 78 );
+					break;
+				case 1: // 10A81 POTABLE H2O QTY
+					display( data, 10, TLM_A, 81 );
+					break;
+				case 2: // 10A84 CABIN TEMP
+					display( data, 10, TLM_A, 84 );
+					break;
+				case 3: // 10A87 SEC RAD IN TEMP
+					display( data, 10, TLM_A, 87 );
+					break;
+				case 4: // 10A90 SEC RAD OUT TEMP
+					display( data, 10, TLM_A, 90 );
+					break;
+			}
+			break;
+		case 39:
+			switch(framect)
+			{
+				case 2: // 10A114 H2O DUMP TEMP
+					display( data, 10, TLM_A, 114 );
 					break;
 			}
 			break;
