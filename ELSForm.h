@@ -1,36 +1,4 @@
-head	1.3;
-access;
-symbols;
-locks; strict;
-comment	@ * @;
-
-
-1.3
-date	2008.10.16.06.27.32;	author movieman523;	state Exp;
-branches;
-next	1.2;
-
-1.2
-date	2008.10.15.03.36.16;	author movieman523;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2007.01.02.01.54.43;	author dseagrav;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.3
-log
-@More telemetry.
-@
-text
-@#pragma once
+#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -160,6 +128,11 @@ namespace GroundStation
 	public: System::Windows::Forms::TextBox *  s11E46;
 	public: System::Windows::Forms::TextBox *  s11A51;
 	public: System::Windows::Forms::TextBox *  s10A22;
+	private: System::Windows::Forms::Label*  label33;
+	private: System::Windows::Forms::Label*  label34;
+	public: System::Windows::Forms::TextBox*  s11E237;
+	public: System::Windows::Forms::TextBox*  s11E225;
+
 
 
 
@@ -177,73 +150,77 @@ namespace GroundStation
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label19 = new System::Windows::Forms::Label();
-			this->s11A9 = new System::Windows::Forms::TextBox();
-			this->label1 = new System::Windows::Forms::Label();
-			this->label2 = new System::Windows::Forms::Label();
-			this->label3 = new System::Windows::Forms::Label();
-			this->label4 = new System::Windows::Forms::Label();
-			this->label5 = new System::Windows::Forms::Label();
-			this->label6 = new System::Windows::Forms::Label();
-			this->label7 = new System::Windows::Forms::Label();
-			this->label8 = new System::Windows::Forms::Label();
-			this->label9 = new System::Windows::Forms::Label();
-			this->label10 = new System::Windows::Forms::Label();
-			this->label11 = new System::Windows::Forms::Label();
-			this->label12 = new System::Windows::Forms::Label();
-			this->label13 = new System::Windows::Forms::Label();
-			this->label14 = new System::Windows::Forms::Label();
-			this->label15 = new System::Windows::Forms::Label();
-			this->label16 = new System::Windows::Forms::Label();
-			this->label17 = new System::Windows::Forms::Label();
-			this->label18 = new System::Windows::Forms::Label();
-			this->label20 = new System::Windows::Forms::Label();
-			this->label21 = new System::Windows::Forms::Label();
-			this->s11A5 = new System::Windows::Forms::TextBox();
-			this->s11A8 = new System::Windows::Forms::TextBox();
-			this->s11A6 = new System::Windows::Forms::TextBox();
-			this->s11E221 = new System::Windows::Forms::TextBox();
-			this->s11E231 = new System::Windows::Forms::TextBox();
-			this->s11E133 = new System::Windows::Forms::TextBox();
-			this->s11E136 = new System::Windows::Forms::TextBox();
-			this->s11E141 = new System::Windows::Forms::TextBox();
-			this->s11E134 = new System::Windows::Forms::TextBox();
-			this->s11E137 = new System::Windows::Forms::TextBox();
-			this->s11E227 = new System::Windows::Forms::TextBox();
-			this->s11E144 = new System::Windows::Forms::TextBox();
-			this->s11E142 = new System::Windows::Forms::TextBox();
-			this->s11E233 = new System::Windows::Forms::TextBox();
-			this->s11E223 = new System::Windows::Forms::TextBox();
-			this->s11E235 = new System::Windows::Forms::TextBox();
-			this->s11E157 = new System::Windows::Forms::TextBox();
-			this->s11E156 = new System::Windows::Forms::TextBox();
-			this->s11E265 = new System::Windows::Forms::TextBox();
-			this->s11E241 = new System::Windows::Forms::TextBox();
-			this->groupBox1 = new System::Windows::Forms::GroupBox();
-			this->groupBox2 = new System::Windows::Forms::GroupBox();
-			this->s11E308 = new System::Windows::Forms::TextBox();
-			this->s11E295 = new System::Windows::Forms::TextBox();
-			this->s11E303 = new System::Windows::Forms::TextBox();
-			this->s11E298 = new System::Windows::Forms::TextBox();
-			this->s11E306 = new System::Windows::Forms::TextBox();
-			this->label26 = new System::Windows::Forms::Label();
-			this->label27 = new System::Windows::Forms::Label();
-			this->label24 = new System::Windows::Forms::Label();
-			this->label25 = new System::Windows::Forms::Label();
-			this->label23 = new System::Windows::Forms::Label();
-			this->s11E291 = new System::Windows::Forms::TextBox();
-			this->label22 = new System::Windows::Forms::Label();
-			this->groupBox3 = new System::Windows::Forms::GroupBox();
-			this->label28 = new System::Windows::Forms::Label();
-			this->label29 = new System::Windows::Forms::Label();
-			this->label30 = new System::Windows::Forms::Label();
-			this->label31 = new System::Windows::Forms::Label();
-			this->label32 = new System::Windows::Forms::Label();
-			this->s11E45 = new System::Windows::Forms::TextBox();
-			this->s11E43 = new System::Windows::Forms::TextBox();
-			this->s11E46 = new System::Windows::Forms::TextBox();
-			this->s11A51 = new System::Windows::Forms::TextBox();
-			this->s10A22 = new System::Windows::Forms::TextBox();
+			this->label19 = (new System::Windows::Forms::Label());
+			this->s11A9 = (new System::Windows::Forms::TextBox());
+			this->label1 = (new System::Windows::Forms::Label());
+			this->label2 = (new System::Windows::Forms::Label());
+			this->label3 = (new System::Windows::Forms::Label());
+			this->label4 = (new System::Windows::Forms::Label());
+			this->label5 = (new System::Windows::Forms::Label());
+			this->label6 = (new System::Windows::Forms::Label());
+			this->label7 = (new System::Windows::Forms::Label());
+			this->label8 = (new System::Windows::Forms::Label());
+			this->label9 = (new System::Windows::Forms::Label());
+			this->label10 = (new System::Windows::Forms::Label());
+			this->label11 = (new System::Windows::Forms::Label());
+			this->label12 = (new System::Windows::Forms::Label());
+			this->label13 = (new System::Windows::Forms::Label());
+			this->label14 = (new System::Windows::Forms::Label());
+			this->label15 = (new System::Windows::Forms::Label());
+			this->label16 = (new System::Windows::Forms::Label());
+			this->label17 = (new System::Windows::Forms::Label());
+			this->label18 = (new System::Windows::Forms::Label());
+			this->label20 = (new System::Windows::Forms::Label());
+			this->label21 = (new System::Windows::Forms::Label());
+			this->s11A5 = (new System::Windows::Forms::TextBox());
+			this->s11A8 = (new System::Windows::Forms::TextBox());
+			this->s11A6 = (new System::Windows::Forms::TextBox());
+			this->s11E221 = (new System::Windows::Forms::TextBox());
+			this->s11E231 = (new System::Windows::Forms::TextBox());
+			this->s11E133 = (new System::Windows::Forms::TextBox());
+			this->s11E136 = (new System::Windows::Forms::TextBox());
+			this->s11E141 = (new System::Windows::Forms::TextBox());
+			this->s11E134 = (new System::Windows::Forms::TextBox());
+			this->s11E137 = (new System::Windows::Forms::TextBox());
+			this->s11E227 = (new System::Windows::Forms::TextBox());
+			this->s11E144 = (new System::Windows::Forms::TextBox());
+			this->s11E142 = (new System::Windows::Forms::TextBox());
+			this->s11E233 = (new System::Windows::Forms::TextBox());
+			this->s11E223 = (new System::Windows::Forms::TextBox());
+			this->s11E235 = (new System::Windows::Forms::TextBox());
+			this->s11E157 = (new System::Windows::Forms::TextBox());
+			this->s11E156 = (new System::Windows::Forms::TextBox());
+			this->s11E265 = (new System::Windows::Forms::TextBox());
+			this->s11E241 = (new System::Windows::Forms::TextBox());
+			this->groupBox1 = (new System::Windows::Forms::GroupBox());
+			this->s11E237 = (new System::Windows::Forms::TextBox());
+			this->s11E225 = (new System::Windows::Forms::TextBox());
+			this->label33 = (new System::Windows::Forms::Label());
+			this->label34 = (new System::Windows::Forms::Label());
+			this->groupBox2 = (new System::Windows::Forms::GroupBox());
+			this->s11E308 = (new System::Windows::Forms::TextBox());
+			this->s11E295 = (new System::Windows::Forms::TextBox());
+			this->s11E303 = (new System::Windows::Forms::TextBox());
+			this->s11E298 = (new System::Windows::Forms::TextBox());
+			this->s11E306 = (new System::Windows::Forms::TextBox());
+			this->label26 = (new System::Windows::Forms::Label());
+			this->label27 = (new System::Windows::Forms::Label());
+			this->label24 = (new System::Windows::Forms::Label());
+			this->label25 = (new System::Windows::Forms::Label());
+			this->label23 = (new System::Windows::Forms::Label());
+			this->s11E291 = (new System::Windows::Forms::TextBox());
+			this->label22 = (new System::Windows::Forms::Label());
+			this->groupBox3 = (new System::Windows::Forms::GroupBox());
+			this->s10A22 = (new System::Windows::Forms::TextBox());
+			this->s11A51 = (new System::Windows::Forms::TextBox());
+			this->s11E46 = (new System::Windows::Forms::TextBox());
+			this->s11E43 = (new System::Windows::Forms::TextBox());
+			this->s11E45 = (new System::Windows::Forms::TextBox());
+			this->label32 = (new System::Windows::Forms::Label());
+			this->label31 = (new System::Windows::Forms::Label());
+			this->label30 = (new System::Windows::Forms::Label());
+			this->label29 = (new System::Windows::Forms::Label());
+			this->label28 = (new System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -278,7 +255,7 @@ namespace GroundStation
 			// 
 			// label2
 			// 
-			this->label2->Location = System::Drawing::Point(8, 64);
+			this->label2->Location = System::Drawing::Point(8, 112);
 			this->label2->Name = S"label2";
 			this->label2->Size = System::Drawing::Size(192, 24);
 			this->label2->TabIndex = 44;
@@ -287,7 +264,7 @@ namespace GroundStation
 			// 
 			// label3
 			// 
-			this->label3->Location = System::Drawing::Point(8, 88);
+			this->label3->Location = System::Drawing::Point(8, 136);
 			this->label3->Name = S"label3";
 			this->label3->Size = System::Drawing::Size(192, 24);
 			this->label3->TabIndex = 45;
@@ -296,7 +273,7 @@ namespace GroundStation
 			// 
 			// label4
 			// 
-			this->label4->Location = System::Drawing::Point(8, 112);
+			this->label4->Location = System::Drawing::Point(8, 160);
 			this->label4->Name = S"label4";
 			this->label4->Size = System::Drawing::Size(192, 24);
 			this->label4->TabIndex = 46;
@@ -305,7 +282,7 @@ namespace GroundStation
 			// 
 			// label5
 			// 
-			this->label5->Location = System::Drawing::Point(8, 136);
+			this->label5->Location = System::Drawing::Point(8, 184);
 			this->label5->Name = S"label5";
 			this->label5->Size = System::Drawing::Size(192, 24);
 			this->label5->TabIndex = 47;
@@ -314,7 +291,7 @@ namespace GroundStation
 			// 
 			// label6
 			// 
-			this->label6->Location = System::Drawing::Point(8, 160);
+			this->label6->Location = System::Drawing::Point(8, 208);
 			this->label6->Name = S"label6";
 			this->label6->Size = System::Drawing::Size(192, 24);
 			this->label6->TabIndex = 48;
@@ -323,7 +300,7 @@ namespace GroundStation
 			// 
 			// label7
 			// 
-			this->label7->Location = System::Drawing::Point(8, 184);
+			this->label7->Location = System::Drawing::Point(8, 232);
 			this->label7->Name = S"label7";
 			this->label7->Size = System::Drawing::Size(192, 24);
 			this->label7->TabIndex = 49;
@@ -332,7 +309,7 @@ namespace GroundStation
 			// 
 			// label8
 			// 
-			this->label8->Location = System::Drawing::Point(8, 208);
+			this->label8->Location = System::Drawing::Point(8, 256);
 			this->label8->Name = S"label8";
 			this->label8->Size = System::Drawing::Size(192, 24);
 			this->label8->TabIndex = 50;
@@ -341,7 +318,7 @@ namespace GroundStation
 			// 
 			// label9
 			// 
-			this->label9->Location = System::Drawing::Point(8, 256);
+			this->label9->Location = System::Drawing::Point(8, 304);
 			this->label9->Name = S"label9";
 			this->label9->Size = System::Drawing::Size(192, 24);
 			this->label9->TabIndex = 52;
@@ -350,7 +327,7 @@ namespace GroundStation
 			// 
 			// label10
 			// 
-			this->label10->Location = System::Drawing::Point(8, 232);
+			this->label10->Location = System::Drawing::Point(8, 280);
 			this->label10->Name = S"label10";
 			this->label10->Size = System::Drawing::Size(192, 24);
 			this->label10->TabIndex = 51;
@@ -359,7 +336,7 @@ namespace GroundStation
 			// 
 			// label11
 			// 
-			this->label11->Location = System::Drawing::Point(8, 280);
+			this->label11->Location = System::Drawing::Point(8, 328);
 			this->label11->Name = S"label11";
 			this->label11->Size = System::Drawing::Size(192, 24);
 			this->label11->TabIndex = 53;
@@ -368,7 +345,7 @@ namespace GroundStation
 			// 
 			// label12
 			// 
-			this->label12->Location = System::Drawing::Point(8, 304);
+			this->label12->Location = System::Drawing::Point(8, 352);
 			this->label12->Name = S"label12";
 			this->label12->Size = System::Drawing::Size(192, 24);
 			this->label12->TabIndex = 54;
@@ -377,7 +354,7 @@ namespace GroundStation
 			// 
 			// label13
 			// 
-			this->label13->Location = System::Drawing::Point(8, 328);
+			this->label13->Location = System::Drawing::Point(8, 376);
 			this->label13->Name = S"label13";
 			this->label13->Size = System::Drawing::Size(192, 24);
 			this->label13->TabIndex = 55;
@@ -386,7 +363,7 @@ namespace GroundStation
 			// 
 			// label14
 			// 
-			this->label14->Location = System::Drawing::Point(8, 352);
+			this->label14->Location = System::Drawing::Point(8, 400);
 			this->label14->Name = S"label14";
 			this->label14->Size = System::Drawing::Size(192, 24);
 			this->label14->TabIndex = 56;
@@ -395,7 +372,7 @@ namespace GroundStation
 			// 
 			// label15
 			// 
-			this->label15->Location = System::Drawing::Point(8, 376);
+			this->label15->Location = System::Drawing::Point(8, 424);
 			this->label15->Name = S"label15";
 			this->label15->Size = System::Drawing::Size(192, 24);
 			this->label15->TabIndex = 57;
@@ -404,7 +381,7 @@ namespace GroundStation
 			// 
 			// label16
 			// 
-			this->label16->Location = System::Drawing::Point(8, 400);
+			this->label16->Location = System::Drawing::Point(8, 448);
 			this->label16->Name = S"label16";
 			this->label16->Size = System::Drawing::Size(192, 24);
 			this->label16->TabIndex = 58;
@@ -413,7 +390,7 @@ namespace GroundStation
 			// 
 			// label17
 			// 
-			this->label17->Location = System::Drawing::Point(8, 424);
+			this->label17->Location = System::Drawing::Point(8, 472);
 			this->label17->Name = S"label17";
 			this->label17->Size = System::Drawing::Size(192, 24);
 			this->label17->TabIndex = 59;
@@ -422,7 +399,7 @@ namespace GroundStation
 			// 
 			// label18
 			// 
-			this->label18->Location = System::Drawing::Point(8, 448);
+			this->label18->Location = System::Drawing::Point(8, 496);
 			this->label18->Name = S"label18";
 			this->label18->Size = System::Drawing::Size(192, 24);
 			this->label18->TabIndex = 60;
@@ -431,7 +408,7 @@ namespace GroundStation
 			// 
 			// label20
 			// 
-			this->label20->Location = System::Drawing::Point(8, 472);
+			this->label20->Location = System::Drawing::Point(8, 520);
 			this->label20->Name = S"label20";
 			this->label20->Size = System::Drawing::Size(192, 24);
 			this->label20->TabIndex = 61;
@@ -440,7 +417,7 @@ namespace GroundStation
 			// 
 			// label21
 			// 
-			this->label21->Location = System::Drawing::Point(8, 496);
+			this->label21->Location = System::Drawing::Point(8, 544);
 			this->label21->Name = S"label21";
 			this->label21->Size = System::Drawing::Size(192, 24);
 			this->label21->TabIndex = 62;
@@ -459,7 +436,7 @@ namespace GroundStation
 			// s11A8
 			// 
 			this->s11A8->Enabled = false;
-			this->s11A8->Location = System::Drawing::Point(200, 376);
+			this->s11A8->Location = System::Drawing::Point(200, 424);
 			this->s11A8->Name = S"s11A8";
 			this->s11A8->Size = System::Drawing::Size(64, 20);
 			this->s11A8->TabIndex = 64;
@@ -468,7 +445,7 @@ namespace GroundStation
 			// s11A6
 			// 
 			this->s11A6->Enabled = false;
-			this->s11A6->Location = System::Drawing::Point(200, 400);
+			this->s11A6->Location = System::Drawing::Point(200, 448);
 			this->s11A6->Name = S"s11A6";
 			this->s11A6->Size = System::Drawing::Size(64, 20);
 			this->s11A6->TabIndex = 65;
@@ -495,7 +472,7 @@ namespace GroundStation
 			// s11E133
 			// 
 			this->s11E133->Enabled = false;
-			this->s11E133->Location = System::Drawing::Point(200, 112);
+			this->s11E133->Location = System::Drawing::Point(200, 160);
 			this->s11E133->Name = S"s11E133";
 			this->s11E133->Size = System::Drawing::Size(64, 20);
 			this->s11E133->TabIndex = 103;
@@ -504,7 +481,7 @@ namespace GroundStation
 			// s11E136
 			// 
 			this->s11E136->Enabled = false;
-			this->s11E136->Location = System::Drawing::Point(200, 136);
+			this->s11E136->Location = System::Drawing::Point(200, 184);
 			this->s11E136->Name = S"s11E136";
 			this->s11E136->Size = System::Drawing::Size(64, 20);
 			this->s11E136->TabIndex = 104;
@@ -513,7 +490,7 @@ namespace GroundStation
 			// s11E141
 			// 
 			this->s11E141->Enabled = false;
-			this->s11E141->Location = System::Drawing::Point(200, 160);
+			this->s11E141->Location = System::Drawing::Point(200, 208);
 			this->s11E141->Name = S"s11E141";
 			this->s11E141->Size = System::Drawing::Size(64, 20);
 			this->s11E141->TabIndex = 105;
@@ -522,7 +499,7 @@ namespace GroundStation
 			// s11E134
 			// 
 			this->s11E134->Enabled = false;
-			this->s11E134->Location = System::Drawing::Point(200, 256);
+			this->s11E134->Location = System::Drawing::Point(200, 304);
 			this->s11E134->Name = S"s11E134";
 			this->s11E134->Size = System::Drawing::Size(64, 20);
 			this->s11E134->TabIndex = 110;
@@ -531,7 +508,7 @@ namespace GroundStation
 			// s11E137
 			// 
 			this->s11E137->Enabled = false;
-			this->s11E137->Location = System::Drawing::Point(200, 232);
+			this->s11E137->Location = System::Drawing::Point(200, 280);
 			this->s11E137->Name = S"s11E137";
 			this->s11E137->Size = System::Drawing::Size(64, 20);
 			this->s11E137->TabIndex = 109;
@@ -540,7 +517,7 @@ namespace GroundStation
 			// s11E227
 			// 
 			this->s11E227->Enabled = false;
-			this->s11E227->Location = System::Drawing::Point(200, 328);
+			this->s11E227->Location = System::Drawing::Point(200, 376);
 			this->s11E227->Name = S"s11E227";
 			this->s11E227->Size = System::Drawing::Size(64, 20);
 			this->s11E227->TabIndex = 108;
@@ -549,7 +526,7 @@ namespace GroundStation
 			// s11E144
 			// 
 			this->s11E144->Enabled = false;
-			this->s11E144->Location = System::Drawing::Point(200, 208);
+			this->s11E144->Location = System::Drawing::Point(200, 256);
 			this->s11E144->Name = S"s11E144";
 			this->s11E144->Size = System::Drawing::Size(64, 20);
 			this->s11E144->TabIndex = 107;
@@ -558,7 +535,7 @@ namespace GroundStation
 			// s11E142
 			// 
 			this->s11E142->Enabled = false;
-			this->s11E142->Location = System::Drawing::Point(200, 184);
+			this->s11E142->Location = System::Drawing::Point(200, 232);
 			this->s11E142->Name = S"s11E142";
 			this->s11E142->Size = System::Drawing::Size(64, 20);
 			this->s11E142->TabIndex = 106;
@@ -567,7 +544,7 @@ namespace GroundStation
 			// s11E233
 			// 
 			this->s11E233->Enabled = false;
-			this->s11E233->Location = System::Drawing::Point(200, 304);
+			this->s11E233->Location = System::Drawing::Point(200, 352);
 			this->s11E233->Name = S"s11E233";
 			this->s11E233->Size = System::Drawing::Size(64, 20);
 			this->s11E233->TabIndex = 112;
@@ -576,7 +553,7 @@ namespace GroundStation
 			// s11E223
 			// 
 			this->s11E223->Enabled = false;
-			this->s11E223->Location = System::Drawing::Point(200, 280);
+			this->s11E223->Location = System::Drawing::Point(200, 328);
 			this->s11E223->Name = S"s11E223";
 			this->s11E223->Size = System::Drawing::Size(64, 20);
 			this->s11E223->TabIndex = 111;
@@ -585,7 +562,7 @@ namespace GroundStation
 			// s11E235
 			// 
 			this->s11E235->Enabled = false;
-			this->s11E235->Location = System::Drawing::Point(200, 352);
+			this->s11E235->Location = System::Drawing::Point(200, 400);
 			this->s11E235->Name = S"s11E235";
 			this->s11E235->Size = System::Drawing::Size(64, 20);
 			this->s11E235->TabIndex = 113;
@@ -594,7 +571,7 @@ namespace GroundStation
 			// s11E157
 			// 
 			this->s11E157->Enabled = false;
-			this->s11E157->Location = System::Drawing::Point(200, 496);
+			this->s11E157->Location = System::Drawing::Point(200, 544);
 			this->s11E157->Name = S"s11E157";
 			this->s11E157->Size = System::Drawing::Size(64, 20);
 			this->s11E157->TabIndex = 117;
@@ -603,7 +580,7 @@ namespace GroundStation
 			// s11E156
 			// 
 			this->s11E156->Enabled = false;
-			this->s11E156->Location = System::Drawing::Point(200, 472);
+			this->s11E156->Location = System::Drawing::Point(200, 520);
 			this->s11E156->Name = S"s11E156";
 			this->s11E156->Size = System::Drawing::Size(64, 20);
 			this->s11E156->TabIndex = 116;
@@ -612,7 +589,7 @@ namespace GroundStation
 			// s11E265
 			// 
 			this->s11E265->Enabled = false;
-			this->s11E265->Location = System::Drawing::Point(200, 448);
+			this->s11E265->Location = System::Drawing::Point(200, 496);
 			this->s11E265->Name = S"s11E265";
 			this->s11E265->Size = System::Drawing::Size(64, 20);
 			this->s11E265->TabIndex = 115;
@@ -621,7 +598,7 @@ namespace GroundStation
 			// s11E241
 			// 
 			this->s11E241->Enabled = false;
-			this->s11E241->Location = System::Drawing::Point(200, 424);
+			this->s11E241->Location = System::Drawing::Point(200, 472);
 			this->s11E241->Name = S"s11E241";
 			this->s11E241->Size = System::Drawing::Size(64, 20);
 			this->s11E241->TabIndex = 114;
@@ -629,6 +606,10 @@ namespace GroundStation
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->s11E237);
+			this->groupBox1->Controls->Add(this->s11E225);
+			this->groupBox1->Controls->Add(this->label33);
+			this->groupBox1->Controls->Add(this->label34);
 			this->groupBox1->Controls->Add(this->label19);
 			this->groupBox1->Controls->Add(this->label16);
 			this->groupBox1->Controls->Add(this->s11A9);
@@ -673,10 +654,46 @@ namespace GroundStation
 			this->groupBox1->Controls->Add(this->label11);
 			this->groupBox1->Location = System::Drawing::Point(8, 8);
 			this->groupBox1->Name = S"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(272, 528);
+			this->groupBox1->Size = System::Drawing::Size(272, 576);
 			this->groupBox1->TabIndex = 118;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = S"LAUNCH ESCAPE SYSTEM";
+			// 
+			// s11E237
+			// 
+			this->s11E237->Enabled = false;
+			this->s11E237->Location = System::Drawing::Point(200, 136);
+			this->s11E237->Name = S"s11E237";
+			this->s11E237->Size = System::Drawing::Size(64, 20);
+			this->s11E237->TabIndex = 124;
+			this->s11E237->Text = S"XXXX";
+			// 
+			// s11E225
+			// 
+			this->s11E225->Enabled = false;
+			this->s11E225->Location = System::Drawing::Point(200, 112);
+			this->s11E225->Name = S"s11E225";
+			this->s11E225->Size = System::Drawing::Size(64, 20);
+			this->s11E225->TabIndex = 123;
+			this->s11E225->Text = S"XXXX";
+			// 
+			// label33
+			// 
+			this->label33->Location = System::Drawing::Point(8, 64);
+			this->label33->Name = S"label33";
+			this->label33->Size = System::Drawing::Size(192, 24);
+			this->label33->TabIndex = 121;
+			this->label33->Text = S"CM-SM SEP RELAY A";
+			this->label33->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label34
+			// 
+			this->label34->Location = System::Drawing::Point(8, 88);
+			this->label34->Name = S"label34";
+			this->label34->Size = System::Drawing::Size(192, 24);
+			this->label34->TabIndex = 122;
+			this->label34->Text = S"CM-SM SEP RELAY B";
+			this->label34->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// groupBox2
 			// 
@@ -826,77 +843,14 @@ namespace GroundStation
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = S"CREW SAFETY SYSTEM";
 			// 
-			// label28
+			// s10A22
 			// 
-			this->label28->Location = System::Drawing::Point(8, 16);
-			this->label28->Name = S"label28";
-			this->label28->Size = System::Drawing::Size(192, 24);
-			this->label28->TabIndex = 108;
-			this->label28->Text = S"SM EDS ABORT REQUEST A";
-			this->label28->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// label29
-			// 
-			this->label29->Location = System::Drawing::Point(8, 40);
-			this->label29->Name = S"label29";
-			this->label29->Size = System::Drawing::Size(192, 24);
-			this->label29->TabIndex = 109;
-			this->label29->Text = S"SM EDS ABORT REQUEST B";
-			this->label29->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// label30
-			// 
-			this->label30->Location = System::Drawing::Point(8, 64);
-			this->label30->Name = S"label30";
-			this->label30->Size = System::Drawing::Size(192, 24);
-			this->label30->TabIndex = 110;
-			this->label30->Text = S"MASTER CAUTION WARNING ON";
-			this->label30->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// label31
-			// 
-			this->label31->Location = System::Drawing::Point(8, 88);
-			this->label31->Name = S"label31";
-			this->label31->Size = System::Drawing::Size(192, 24);
-			this->label31->TabIndex = 111;
-			this->label31->Text = S"ANGLE OF ATTACK";
-			this->label31->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// label32
-			// 
-			this->label32->Location = System::Drawing::Point(8, 112);
-			this->label32->Name = S"label32";
-			this->label32->Size = System::Drawing::Size(192, 24);
-			this->label32->TabIndex = 112;
-			this->label32->Text = S"DOCKING PROBE TEMP";
-			this->label32->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// s11E45
-			// 
-			this->s11E45->Enabled = false;
-			this->s11E45->Location = System::Drawing::Point(200, 16);
-			this->s11E45->Name = S"s11E45";
-			this->s11E45->Size = System::Drawing::Size(64, 20);
-			this->s11E45->TabIndex = 113;
-			this->s11E45->Text = S"XXXX";
-			// 
-			// s11E43
-			// 
-			this->s11E43->Enabled = false;
-			this->s11E43->Location = System::Drawing::Point(200, 40);
-			this->s11E43->Name = S"s11E43";
-			this->s11E43->Size = System::Drawing::Size(64, 20);
-			this->s11E43->TabIndex = 114;
-			this->s11E43->Text = S"XXXX";
-			// 
-			// s11E46
-			// 
-			this->s11E46->Enabled = false;
-			this->s11E46->Location = System::Drawing::Point(200, 64);
-			this->s11E46->Name = S"s11E46";
-			this->s11E46->Size = System::Drawing::Size(64, 20);
-			this->s11E46->TabIndex = 115;
-			this->s11E46->Text = S"XXXX";
+			this->s10A22->Enabled = false;
+			this->s10A22->Location = System::Drawing::Point(200, 112);
+			this->s10A22->Name = S"s10A22";
+			this->s10A22->Size = System::Drawing::Size(64, 20);
+			this->s10A22->TabIndex = 117;
+			this->s10A22->Text = S"XXX.XX °F";
 			// 
 			// s11A51
 			// 
@@ -907,19 +861,82 @@ namespace GroundStation
 			this->s11A51->TabIndex = 116;
 			this->s11A51->Text = S"XX.XX V";
 			// 
-			// s10A22
+			// s11E46
 			// 
-			this->s10A22->Enabled = false;
-			this->s10A22->Location = System::Drawing::Point(200, 112);
-			this->s10A22->Name = S"s10A22";
-			this->s10A22->Size = System::Drawing::Size(64, 20);
-			this->s10A22->TabIndex = 117;
-			this->s10A22->Text = S"XXX.XX °F";
+			this->s11E46->Enabled = false;
+			this->s11E46->Location = System::Drawing::Point(200, 64);
+			this->s11E46->Name = S"s11E46";
+			this->s11E46->Size = System::Drawing::Size(64, 20);
+			this->s11E46->TabIndex = 115;
+			this->s11E46->Text = S"XXXX";
+			// 
+			// s11E43
+			// 
+			this->s11E43->Enabled = false;
+			this->s11E43->Location = System::Drawing::Point(200, 40);
+			this->s11E43->Name = S"s11E43";
+			this->s11E43->Size = System::Drawing::Size(64, 20);
+			this->s11E43->TabIndex = 114;
+			this->s11E43->Text = S"XXXX";
+			// 
+			// s11E45
+			// 
+			this->s11E45->Enabled = false;
+			this->s11E45->Location = System::Drawing::Point(200, 16);
+			this->s11E45->Name = S"s11E45";
+			this->s11E45->Size = System::Drawing::Size(64, 20);
+			this->s11E45->TabIndex = 113;
+			this->s11E45->Text = S"XXXX";
+			// 
+			// label32
+			// 
+			this->label32->Location = System::Drawing::Point(8, 112);
+			this->label32->Name = S"label32";
+			this->label32->Size = System::Drawing::Size(192, 24);
+			this->label32->TabIndex = 112;
+			this->label32->Text = S"DOCKING PROBE TEMP";
+			this->label32->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label31
+			// 
+			this->label31->Location = System::Drawing::Point(8, 88);
+			this->label31->Name = S"label31";
+			this->label31->Size = System::Drawing::Size(192, 24);
+			this->label31->TabIndex = 111;
+			this->label31->Text = S"ANGLE OF ATTACK";
+			this->label31->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label30
+			// 
+			this->label30->Location = System::Drawing::Point(8, 64);
+			this->label30->Name = S"label30";
+			this->label30->Size = System::Drawing::Size(192, 24);
+			this->label30->TabIndex = 110;
+			this->label30->Text = S"MASTER CAUTION WARNING ON";
+			this->label30->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label29
+			// 
+			this->label29->Location = System::Drawing::Point(8, 40);
+			this->label29->Name = S"label29";
+			this->label29->Size = System::Drawing::Size(192, 24);
+			this->label29->TabIndex = 109;
+			this->label29->Text = S"SM EDS ABORT REQUEST B";
+			this->label29->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label28
+			// 
+			this->label28->Location = System::Drawing::Point(8, 16);
+			this->label28->Name = S"label28";
+			this->label28->Size = System::Drawing::Size(192, 24);
+			this->label28->TabIndex = 108;
+			this->label28->Text = S"SM EDS ABORT REQUEST A";
+			this->label28->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// ELSForm
 			// 
 			this->AutoScaleBaseSize = System::Drawing::Size(5, 13);
-			this->ClientSize = System::Drawing::Size(566, 540);
+			this->ClientSize = System::Drawing::Size(566, 588);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -927,72 +944,13 @@ namespace GroundStation
 			this->Name = S"ELSForm";
 			this->Text = S"LES / ELS / CSS";
 			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}		
 };
-}@
-
-
-1.2
-log
-@Made it build in VC2008.
-@
-text
-@d45 1
-a45 1
-	private: System::Windows::Forms::TextBox *  s11A9;
-d86 20
-a105 20
-	private: System::Windows::Forms::TextBox *  s11A5;
-	private: System::Windows::Forms::TextBox *  s11E221;
-	private: System::Windows::Forms::TextBox *  s11E231;
-	private: System::Windows::Forms::TextBox *  s11E133;
-	private: System::Windows::Forms::TextBox *  s11E136;
-	private: System::Windows::Forms::TextBox *  s11E141;
-	private: System::Windows::Forms::TextBox *  s11E134;
-	private: System::Windows::Forms::TextBox *  s11E137;
-	private: System::Windows::Forms::TextBox *  s11E144;
-	private: System::Windows::Forms::TextBox *  s11E142;
-	private: System::Windows::Forms::TextBox *  s11E233;
-	private: System::Windows::Forms::TextBox *  s11E223;
-	private: System::Windows::Forms::TextBox *  s11A8;
-	private: System::Windows::Forms::TextBox *  s11A6;
-	private: System::Windows::Forms::TextBox *  s11E227;
-	private: System::Windows::Forms::TextBox *  s11E235;
-	private: System::Windows::Forms::TextBox *  s11E157;
-	private: System::Windows::Forms::TextBox *  s11E156;
-	private: System::Windows::Forms::TextBox *  s11E265;
-	private: System::Windows::Forms::TextBox *  s11E241;
-d108 1
-a108 1
-	private: System::Windows::Forms::TextBox *  s11E291;
-d115 5
-a119 5
-	private: System::Windows::Forms::TextBox *  s11E306;
-	private: System::Windows::Forms::TextBox *  s11E298;
-	private: System::Windows::Forms::TextBox *  s11E308;
-	private: System::Windows::Forms::TextBox *  s11E295;
-	private: System::Windows::Forms::TextBox *  s11E303;
-d126 5
-a130 5
-	private: System::Windows::Forms::TextBox *  s11E45;
-	private: System::Windows::Forms::TextBox *  s11E43;
-	private: System::Windows::Forms::TextBox *  s11E46;
-	private: System::Windows::Forms::TextBox *  s11A51;
-	private: System::Windows::Forms::TextBox *  s10A22;
-@
-
-
-1.1
-log
-@Initial Commit
-@
-text
-@d28 1
-a28 1
-			this->add_Closing(new CancelEventHandler(this,ELSForm_Closing));
-@
-
+}

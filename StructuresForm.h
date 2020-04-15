@@ -1,36 +1,4 @@
-head	1.3;
-access;
-symbols;
-locks; strict;
-comment	@ * @;
-
-
-1.3
-date	2008.10.17.07.16.03;	author movieman523;	state Exp;
-branches;
-next	1.2;
-
-1.2
-date	2008.10.15.03.36.16;	author movieman523;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2007.01.02.01.54.46;	author dseagrav;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.3
-log
-@More telemetry.
-@
-text
-@#pragma once
+#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -347,49 +315,4 @@ private: System::Void StructuresForm_Load(System::Object *  sender, System::Even
 		 }
 
 };
-}@
-
-
-1.2
-log
-@Made it build in VC2008.
-@
-text
-@d46 2
-a47 2
-	private: System::Windows::Forms::TextBox *  s10A65;
-	private: System::Windows::Forms::TextBox *  s10A70;
-d49 1
-a49 1
-	private: System::Windows::Forms::TextBox *  s10A74;
-d51 1
-a51 1
-	private: System::Windows::Forms::TextBox *  s10A79;
-d53 1
-a53 1
-	private: System::Windows::Forms::TextBox *  s10A142;
-d57 3
-a59 3
-	private: System::Windows::Forms::TextBox *  s10A137;
-	private: System::Windows::Forms::TextBox *  s10A139;
-	private: System::Windows::Forms::TextBox *  s10A140;
-d62 2
-a63 2
-	private: System::Windows::Forms::TextBox *  s10A143;
-	private: System::Windows::Forms::TextBox *  s10A145;
-@
-
-
-1.1
-log
-@Initial Commit
-@
-text
-@d28 1
-a28 1
-			this->add_Closing(new CancelEventHandler(this,StructuresForm_Closing));
-d308 1
-a308 1
-			this->Load += new System::EventHandler(this, StructuresForm_Load);
-@
-
+}

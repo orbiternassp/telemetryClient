@@ -1,36 +1,4 @@
-head	1.3;
-access;
-symbols;
-locks; strict;
-comment	@ * @;
-
-
-1.3
-date	2008.10.16.06.27.32;	author movieman523;	state Exp;
-branches;
-next	1.2;
-
-1.2
-date	2008.10.15.03.36.16;	author movieman523;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2007.01.02.01.54.43;	author dseagrav;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.3
-log
-@More telemetry.
-@
-text
-@#pragma once
+#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -805,58 +773,4 @@ namespace GroundStation
 		}		
 
 };
-}@
-
-
-1.2
-log
-@Made it build in VC2008.
-@
-text
-@d45 19
-a63 19
-	private: System::Windows::Forms::TextBox *  s11E191;
-	private: System::Windows::Forms::TextBox *  s12A3;
-	private: System::Windows::Forms::TextBox *  s12A1;
-	private: System::Windows::Forms::TextBox *  s10A85;
-	private: System::Windows::Forms::TextBox *  s11E154;
-	private: System::Windows::Forms::TextBox *  s11E153;
-	private: System::Windows::Forms::TextBox *  s11E152;
-	private: System::Windows::Forms::TextBox *  s12A2;
-	private: System::Windows::Forms::TextBox *  s10A96;
-	private: System::Windows::Forms::TextBox *  s11A63;
-	private: System::Windows::Forms::TextBox *  s11A62;
-	private: System::Windows::Forms::TextBox *  s11A61;
-	private: System::Windows::Forms::TextBox *  s11A60;
-	private: System::Windows::Forms::TextBox *  s11A59;
-	private: System::Windows::Forms::TextBox *  s11A54;
-	private: System::Windows::Forms::TextBox *  s11A53;
-	private: System::Windows::Forms::TextBox *  s11A52;
-	private: System::Windows::Forms::TextBox *  s10A91;
-	private: System::Windows::Forms::TextBox *  s10A138;
-d83 1
-a83 1
-	private: System::Windows::Forms::TextBox *  s10A83;
-d89 3
-a91 3
-	private: System::Windows::Forms::TextBox *  s12A9;
-	private: System::Windows::Forms::TextBox *  s12A11;
-	private: System::Windows::Forms::TextBox *  s12A12;
-d95 3
-a97 3
-	private: System::Windows::Forms::TextBox *  s11A169;
-	private: System::Windows::Forms::TextBox *  s11A16;
-	private: System::Windows::Forms::TextBox *  s10A149;
-@
-
-
-1.1
-log
-@Initial Commit
-@
-text
-@d28 1
-a28 1
-			this->add_Closing(new CancelEventHandler(this,GNCForm_Closing));
-@
-
+}
