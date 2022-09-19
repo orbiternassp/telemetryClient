@@ -177,8 +177,8 @@ double Form1::unscale_data_sq( unsigned char data, double low, double high )
 		return high;
 	}
 
-	double step = ( ( high - low ) / 256.0 / 256.0);
-	return ( data * data * step ) + low;
+	double step = ( ( high - low ) / 253.0 / 253.0);
+	return ((data - 1) * (data - 1) * step) + low;
 }
 
 void Form1::showValue( textDisplay *tb, char *msg )
