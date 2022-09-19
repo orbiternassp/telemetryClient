@@ -160,8 +160,8 @@ double Form1::unscale_data( unsigned char data, double low, double high )
 		return high;
 	}
 
-	double step = ( ( high - low ) / 256.0);
-	return ( data * step ) + low;
+	double step = ( ( high - low ) / 253.0);
+	return ((data - 1) * step) + low;
 }
 
 //unscale quadratic PCM data
@@ -1668,6 +1668,27 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				break;
 			}
 			break;
+		case 51: // S51A
+			switch( ccode )
+			{
+			case 5: // 51A5 PITCH ATT ERR
+				if( scs_form != NULL)
+				{
+					value = unscale_data(data, -15, 15);
+					sprintf(msg,"%+04.2f °",value);
+					showValue( scs_form->s51A5, msg );
+				}
+				break;
+			case 6: // 51A6 YAW ATT ERR
+				if( scs_form != NULL)
+				{
+					value = unscale_data(data, -15, 15);
+					sprintf(msg,"%+04.2f °",value);
+					showValue( scs_form->s51A6, msg );
+				}
+				break;
+			}
+			break;
 		}
 		break;
 	case TLM_DP:
@@ -1761,7 +1782,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 						showEvent( els_form->s11E298, data, 0200);
 					}
 					break;
-					case 30: //11DP30
+				case 30: //11DP30
 					if ( els_form != NULL)
 					{
 						showEvent( els_form->s11E303, data, 04);
@@ -1791,7 +1812,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			if(data != 0267){ end_hbr(); lock_type = 0; cmc_lock_type = 0; }
 			break;
 		case 3: // FRAME COUNT
-			framect = data&077; // 0-49 frame count
+			framect = data&077; // 1-50 frame count
 			// GENERATE 0-4 SUBFRAME #
 			sprintf(msg,"%03d",framect);
 			switch(msg[2]){
@@ -2315,6 +2336,22 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			display( data, 10, TLM_A, 1+(framect*3) );
 			break;
 
+		case 60:
+			display( data, 51, TLM_A, 4 );
+			break;
+
+		case 61:
+			display( data, 51, TLM_A, 5 );
+			break;
+
+		case 62:
+			display( data, 51, TLM_A, 6 );
+			break;
+
+		case 63:
+			display( data, 51, TLM_A, 7 );
+			break;
+
 		case 64:
 			switch(framead){
 			case 2: //11DP13
@@ -2322,6 +2359,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 				break;
 			}
 			break;
+
 		case 65:
 			switch(framead){
 			case 2: //11DP14
@@ -2332,6 +2370,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 				break;
 			}
 			break;
+
 		case 66:
 			switch(framead){
 			case 2: //11DP15
@@ -2345,6 +2384,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 				break;
 			}
 			break;
+
 		case 67:
 			switch(framead){
 			case 3: //11DP23
