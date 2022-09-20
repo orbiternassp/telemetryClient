@@ -464,7 +464,7 @@ private: System::Windows::Forms::Label *  label27;
 			this->label9->Name = S"label9";
 			this->label9->Size = System::Drawing::Size(120, 24);
 			this->label9->TabIndex = 24;
-			this->label9->Text = S"O2 TK 2 TEMP";
+			this->label9->Text = S"H2 TK 2 TEMP";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// label10
@@ -473,7 +473,7 @@ private: System::Windows::Forms::Label *  label27;
 			this->label10->Name = S"label10";
 			this->label10->Size = System::Drawing::Size(120, 24);
 			this->label10->TabIndex = 23;
-			this->label10->Text = S"O2 TK 1 TEMP";
+			this->label10->Text = S"H2 TK 1 TEMP";
 			this->label10->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// label11
@@ -482,7 +482,7 @@ private: System::Windows::Forms::Label *  label27;
 			this->label11->Name = S"label11";
 			this->label11->Size = System::Drawing::Size(120, 24);
 			this->label11->TabIndex = 22;
-			this->label11->Text = S"H2 TK 2 TEMP";
+			this->label11->Text = S"O2 TK 2 TEMP";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// label12
@@ -491,7 +491,7 @@ private: System::Windows::Forms::Label *  label27;
 			this->label12->Name = S"label12";
 			this->label12->Size = System::Drawing::Size(120, 24);
 			this->label12->TabIndex = 21;
-			this->label12->Text = S"H2 TK 1 TEMP";
+			this->label12->Text = S"O2 TK 1 TEMP";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// s10A54

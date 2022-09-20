@@ -156,6 +156,7 @@ namespace GroundStation
 		void setup_cmc_list();
 		char get_dsky_char(unsigned int bits);
 		double unscale_data(unsigned char data,double low,double high);
+		double unscale_data_sq(unsigned char data,double low,double high);
 		void parse_hbr(unsigned char data, int bytect);
 		void parse_lbr(unsigned char data, int bytect);
 		void display(unsigned char data, int channel, int type, int ccode);
