@@ -547,7 +547,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 60: // H2 TK 1 TEMP
 				if ( eps_form != NULL )
 				{
-					showTempF( eps_form->s10A60, data,  -425, 200 );							
+					showTempF( eps_form->s10A60, data,  -425, -200 );
 				}
 				break;
 
@@ -568,7 +568,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 63: // H2 TK 2 TEMP
 				if ( eps_form != NULL )
 				{
-					showTempF( eps_form->s10A63, data,  -425, 200 );							
+					showTempF( eps_form->s10A63, data,  -425, -200 );
 				}
 				break;
 
