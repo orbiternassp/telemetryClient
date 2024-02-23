@@ -1165,6 +1165,15 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 54: // IG 1X RSVR OUT SIN
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A54, msg );
+				}
+				break;
+
 			case 55: // O2 SUPPLY MANF PRESS
 				if ( ecs_form != NULL )
 				{
@@ -1198,6 +1207,51 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 					value = unscale_data(data,0,45);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( eps_form->s11A58, msg );						
+				}
+				break;
+
+			case 59: // IG 1X RSVR OUT COS
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A59, msg );
+				}
+				break;
+
+			case 60: // MG 1X RSVR OUT SIN
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A60, msg );
+				}
+				break;
+
+			case 61: // MG 1X RSVR OUT COS
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A61, msg );
+				}
+				break;
+
+			case 62: // OG 1X RSVR OUT SIN
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A62, msg );
+				}
+				break;
+
+			case 63: // OG 1X RSVR OUT COS
+				if ( gnc_form != NULL )
+				{
+					value = unscale_data(data,-21,21);
+					sprintf(msg,"%+04.2f V",value);
+					showValue( gnc_form->s11A63, msg );
 				}
 				break;
 
@@ -2336,6 +2390,15 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			display( data, 10, TLM_A, 1+(framect*3) );
 			break;
 
+		case 59:
+			switch(framead)
+			{
+			case 1: // 11A54 IG 1X RSVR OUT SIN
+				display( data, 11, TLM_A, 54 );
+				break;
+			}
+			break;
+
 		case 60:
 			display( data, 51, TLM_A, 4 );
 			break;
@@ -2439,6 +2502,15 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			}
 			break;
 
+		case 80:
+			switch (framead)
+			{
+			case 1: // 11A54 IG 1X RSVR OUT COS
+				display (data, 11, TLM_A, 59 );
+				break;
+			}
+			break;
+
 		case 83: // MAGICAL WORD 2
 			// 10A2
 			// 10A5
@@ -2446,6 +2518,42 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// ...
 			// 10A149
 			display( data, 10, TLM_A, 2+(framect*3) );
+			break;
+
+		case 88:
+			switch (framead)
+			{
+			case 1: // 11A60 MG 1X RSVR OUT SIN
+				display (data, 11, TLM_A, 60 );
+				break;
+			}
+			break;
+
+		case 89:
+			switch (framead)
+			{
+			case 1: // 11A61 MG 1X RSVR OUT COS
+				display (data, 11, TLM_A, 61 );
+				break;
+			}
+			break;
+
+		case 90:
+			switch (framead)
+			{
+			case 1: // 11A62 OG 1X RSVR OUT SIN
+				display (data, 11, TLM_A, 62 );
+				break;
+			}
+			break;
+
+		case 91:
+			switch (framead)
+			{
+			case 1: // 11A63 OG 1X RSVR OUT COS
+				display (data, 11, TLM_A, 63 );
+				break;
+			}
 			break;
 
 		case 96:
