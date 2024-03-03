@@ -797,6 +797,14 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				}
 				break;
 
+			case 117: // SPS FU FEED LINE TEMP
+
+				if ( sps_form != NULL )
+				{
+					showTempF( sps_form->s10A117, data,  0, 200 );
+				}
+				break;
+
 			case 118: // SCI EXP #12
 				if ( crw_form != NULL )
 				{
@@ -808,6 +816,14 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( crw_form != NULL )
 				{
 					showSci( crw_form->s10A119, data );					
+				}
+				break;
+
+			case 120: // SPS OX FEED LINE TEMP
+
+				if ( sps_form != NULL )
+				{
+					showTempF( sps_form->s10A120, data,  0, 200 );
 				}
 				break;
 
