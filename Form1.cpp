@@ -247,6 +247,14 @@ void Form1::showTempF( textDisplay *tb, unsigned char data, double low, double h
 	showValue( tb, msg );
 }
 
+void Form1::showDEG( textDisplay *tb, unsigned char data, double low, double high )
+{
+	char msg[64];
+
+	sprintf(msg, "%05.1f DEG", unscale_data(data, low, high));
+	showValue( tb, msg );
+}
+
 void Form1::showEvent( textDisplay *tb, unsigned char data, int bit)
 {
 	char msg[64];
@@ -1063,6 +1071,34 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( eps_form )
 				{
 					showPSIA( eps_form->s11A30, data,  0.0, 75.0 );
+				}
+				break;
+
+			case 31: // 11A31 SPS FU/OX VLV 1 POS
+				if ( sps_form )
+				{
+					showDEG( sps_form->s11A31, data,  0.0, 90.0 );
+				}
+				break;
+
+			case 32: // 11A31 SPS FU/OX VLV 2 POS
+				if ( sps_form )
+				{
+					showDEG( sps_form->s11A32, data,  0.0, 90.0 );
+				}
+				break;
+
+			case 33: // 11A31 SPS FU/OX VLV 3 POS
+				if ( sps_form )
+				{
+					showDEG( sps_form->s11A33, data,  0.0, 90.0 );
+				}
+				break;
+
+			case 34: // 11A31 SPS FU/OX VLV 4 POS
+				if ( sps_form )
+				{
+					showDEG( sps_form->s11A34, data,  0.0, 90.0 );
 				}
 				break;
 
@@ -2614,6 +2650,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 		case 107:
 			switch(framead){
+			case 0: // SPS FU/OX VLV 1 POS
+				display( data, 11, TLM_A, 31 );
+				break;
 			case 1: // FC 1 O2 PRESS
 				display( data, 11, TLM_A, 67 );
 				break;
@@ -2622,6 +2661,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 		case 112:
 			switch(framead){
+			case 0: // SPS FU/OX VLV 2 POS
+				display( data, 11, TLM_A, 32 );
+				break;
 			case 1: // FC 2 O2 PRESS
 				display( data, 11, TLM_A, 68 );
 				break;
@@ -2639,6 +2681,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 		case 120:
 			switch(framead){
+			case 0: // SPS FU/OX VLV 3 POS
+				display( data, 11, TLM_A, 33 );
+				break;
 			case 1: // FC 3 O2 PRESS
 				display( data, 11, TLM_A, 69 );
 				break;
@@ -2647,6 +2692,9 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 
 		case 121:
 			switch(framead){
+			case 0: // SPS FU/OX VLV 4 POS
+				display( data, 11, TLM_A, 34 );
+				break;
 			case 1: // FC 1 H2 PRESS
 				display( data, 11, TLM_A, 70 );
 				break;
