@@ -169,6 +169,7 @@ namespace GroundStation
 		void showSci( textDisplay *tb, unsigned char data );
 		void showPSIA( textDisplay *tb, unsigned char data, double low, double high );
 		void showTempF( textDisplay *tb, unsigned char data, double low, double high );
+		void showDEG( textDisplay *tb, unsigned char data, double low, double high );
 		void showEvent( textDisplay *tb, unsigned char data, int bit);
 
 		/// <summary>
