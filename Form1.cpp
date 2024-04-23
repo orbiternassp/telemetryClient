@@ -236,11 +236,11 @@ void Form1::showTempF( textDisplay *tb, unsigned char data, double low, double h
 	// If low < 0 we need the sign. If low > 0 then high must also be > 0.
 	if ( low < 0 )
 	{
-		sFormat = "%+07.2f °F";
+		sFormat = "%+07.2f ï¿½F";
 	}
 	else
 	{
-		sFormat = "%06.2f °F";
+		sFormat = "%06.2f ï¿½F";
 	}
 
 	sprintf(msg, sFormat, unscale_data(data, low, high));
@@ -1220,7 +1220,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 54: // IG 1X RSVR OUT SIN
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A54, msg );
 				}
@@ -1265,7 +1265,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 59: // IG 1X RSVR OUT COS
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A59, msg );
 				}
@@ -1274,7 +1274,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 60: // MG 1X RSVR OUT SIN
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A60, msg );
 				}
@@ -1283,7 +1283,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 61: // MG 1X RSVR OUT COS
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A61, msg );
 				}
@@ -1292,7 +1292,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 62: // OG 1X RSVR OUT SIN
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A62, msg );
 				}
@@ -1301,7 +1301,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 63: // OG 1X RSVR OUT COS
 				if ( gnc_form != NULL )
 				{
-					value = unscale_data(data,-21,21);
+					value = unscale_data(data,-20.10,20.32);
 					sprintf(msg,"%+04.2f V",value);
 					showValue( gnc_form->s11A63, msg );
 				}
@@ -1515,7 +1515,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( ecs_form != NULL )
 				{
 					value = unscale_data(data, 25, 75);
-					sprintf(msg,"%05.2f °F",value);
+					sprintf(msg,"%05.2f ï¿½F",value);
 					showValue( ecs_form->s11A118, msg );						
 				}
 				break;
@@ -1596,7 +1596,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if (sps_form != NULL)
 				{
 					value = unscale_data(data, 0, 300);
-					sprintf(msg,"%05.2f °F",value);
+					sprintf(msg,"%05.2f ï¿½F",value);
 					showValue( sps_form->s11A155, msg );								
 				}
 				break;
@@ -1605,7 +1605,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if (sps_form != NULL)
 				{
 					value = unscale_data(data, 0, 300);
-					sprintf(msg,"%05.2f °F",value);
+					sprintf(msg,"%05.2f ï¿½F",value);
 					showValue( sps_form->s11A156, msg );								
 				}
 				break;
@@ -1655,7 +1655,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -50, 50);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A4, msg );
 				}
 				break;
@@ -1664,7 +1664,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL )
 				{
 					value = unscale_data(data, -10, 10);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A5, msg );
 				}
 				break;
@@ -1673,7 +1673,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -10, 10);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A6, msg );						
 				}
 				break;
@@ -1682,7 +1682,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -50, 50);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A7, msg );						
 				}
 				break;
@@ -1691,7 +1691,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -5, 5);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A8, msg );						
 				}
 				break;
@@ -1709,7 +1709,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -5, 5);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s12A10, msg );						
 				}
 				break;
@@ -1781,7 +1781,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL)
 				{
 					value = unscale_data(data, -15, 15);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s51A5, msg );
 				}
 				break;
@@ -1789,7 +1789,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL)
 				{
 					value = unscale_data(data, -15, 15);
-					sprintf(msg,"%+04.2f °",value);
+					sprintf(msg,"%+04.2f ï¿½",value);
 					showValue( scs_form->s51A6, msg );
 				}
 				break;
