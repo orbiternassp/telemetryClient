@@ -450,7 +450,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 			case 31: // FU TK 2 QTY
 				if ( sps_form != NULL )
 				{
-					showPercentage( sps_form->s10A28, data, 60.0 );
+					showPercentage( sps_form->s10A31, data, 60.0 );
 				}
 				break;
 
