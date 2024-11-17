@@ -2439,7 +2439,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// 10A7
 			// ...
 			// 10A148
-			display( data, 10, TLM_A, 1+(framect*3) );
+			display( data, 10, TLM_A, (framect*3)-2 );
 			break;
 
 		case 59:
@@ -2569,7 +2569,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// 10A8
 			// ...
 			// 10A149
-			display( data, 10, TLM_A, 2+(framect*3) );
+			display( data, 10, TLM_A, (framect*3)-1 );
 			break;
 
 		case 88:
@@ -2676,7 +2676,7 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			// 10A9
 			// ...
 			// 10A150
-			display( data, 10, TLM_A, 3+(framect*3) );
+			display( data, 10, TLM_A, (framect*3) );
 			break;
 
 		case 120:
