@@ -246,11 +246,11 @@ void Form1::showTempF( textDisplay *tb, unsigned char data, double low, double h
 	// If low < 0 we need the sign. If low > 0 then high must also be > 0.
 	if ( low < 0 )
 	{
-		sFormat = "%+07.2f �F";
+		sFormat = "%+07.2f °F";
 	}
 	else
 	{
-		sFormat = "%06.2f �F";
+		sFormat = "%06.2f °F";
 	}
 
 	sprintf(msg, sFormat, unscale_data(data, low, high));
@@ -1525,7 +1525,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( ecs_form != NULL )
 				{
 					value = unscale_data(data, 25, 75);
-					sprintf(msg,"%05.2f �F",value);
+					sprintf(msg,"%05.2f °F",value);
 					showValue( ecs_form->s11A118, msg );						
 				}
 				break;
@@ -1606,7 +1606,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if (sps_form != NULL)
 				{
 					value = unscale_data(data, 0, 300);
-					sprintf(msg,"%05.2f �F",value);
+					sprintf(msg,"%05.2f °F",value);
 					showValue( sps_form->s11A155, msg );								
 				}
 				break;
@@ -1615,7 +1615,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if (sps_form != NULL)
 				{
 					value = unscale_data(data, 0, 300);
-					sprintf(msg,"%05.2f �F",value);
+					sprintf(msg,"%05.2f °F",value);
 					showValue( sps_form->s11A156, msg );								
 				}
 				break;
@@ -1665,7 +1665,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -50, 50);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A4, msg );
 				}
 				break;
@@ -1674,7 +1674,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL )
 				{
 					value = unscale_data(data, -10, 10);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A5, msg );
 				}
 				break;
@@ -1683,7 +1683,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -10, 10);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A6, msg );						
 				}
 				break;
@@ -1692,7 +1692,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -50, 50);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A7, msg );						
 				}
 				break;
@@ -1701,7 +1701,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -5, 5);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A8, msg );						
 				}
 				break;
@@ -1719,7 +1719,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if ( scs_form != NULL )
 				{
 					value = unscale_data(data, -5, 5);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s12A10, msg );						
 				}
 				break;
@@ -1739,6 +1739,22 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 					value = unscale_data(data, -2, 2);
 					sprintf(msg,"%+05.3f G",value);
 					showValue( gnc_form->s12A12, msg );						
+				}
+				break;
+			case 13: // 12A13 SCS TVC YAW AUTO CMD
+				if ( scs_form != NULL )
+				{
+					value = unscale_data(data, -10.0, 10.0);
+					sprintf(msg,"%+05.2f VDC",value);
+					showValue( scs_form->s12A13, msg );
+				}
+				break;
+			case 15: // 12A15 SCS TVC PITCH AUTO CMD
+				if ( scs_form != NULL )
+				{
+					value = unscale_data(data, -10.0, 10.0);
+					sprintf(msg,"%+05.2f VDC",value);
+					showValue( scs_form->s12A15, msg );
 				}
 				break;
 			}
@@ -1791,7 +1807,7 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL)
 				{
 					value = unscale_data(data, -15, 15);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s51A5, msg );
 				}
 				break;
@@ -1799,8 +1815,32 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 				if( scs_form != NULL)
 				{
 					value = unscale_data(data, -15, 15);
-					sprintf(msg,"%+04.2f �",value);
+					sprintf(msg,"%+04.2f °",value);
 					showValue( scs_form->s51A6, msg );
+				}
+				break;
+			case 11: // 51A11 MTVC PITCH CMD
+				if( scs_form != NULL)
+				{
+					value = unscale_data(data, -10, 10);
+					sprintf(msg,"%+04.2f °",value);
+					showValue( scs_form->s51A11, msg );
+				}
+				break;
+			case 12: // 51A12 MTVC YAW CMD
+				if( scs_form != NULL)
+				{
+					value = unscale_data(data, -10, 10);
+					sprintf(msg,"%+04.2f °",value);
+					showValue( scs_form->s51A12, msg );
+				}
+				break;
+			case 13: // 51A13 ROT ROLL CMD
+				if( scs_form != NULL)
+				{
+					value = unscale_data(data, -10, 10);
+					sprintf(msg,"%+04.2f °",value);
+					showValue( scs_form->s51A13, msg );
 				}
 				break;
 			}
@@ -1810,10 +1850,10 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 	case TLM_DP:
 	case TLM_E:
 		switch(channel){
-			case 10: // S10A
+			case 10: // S10E
 				
 				break;
-			case 11: // S11A
+			case 11: // S11E
 				switch(ccode)
 				{
 				case 4: //11DP4
@@ -1826,6 +1866,29 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 					if (ecs_form != NULL)
 					{
 						showEvent( ecs_form->s11E4_8, data, 0200);
+					}
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E44, data, 010);	// SPS SOL DRIVER 1
+					}
+					break;
+				case 8: // 11DP8
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E82, data, 02);		// ATT DEADBAND MIN
+						showEvent( scs_form->s11E84, data, 010);	// HI RATE LIMIT
+						showEvent( scs_form->s11E85, data, 020);	// FDAI ERR 5 RATE 5
+						showEvent( scs_form->s11E86, data, 040);	// FDAI SCALE ERR 50/15
+						showEvent( scs_form->s11E87, data, 0100);	// GYRO 1 COMB SMRD
+						showEvent( scs_form->s11E88, data, 0200);	// GYRO 2 COMB SMRD
+					}
+					break;
+				case 9: // 11DP9
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E93, data, 04);		// DV CG LM/CSM
+						showEvent( scs_form->s11E94, data, 010);	// SPS SOL DRIVER 2
+						showEvent( scs_form->s11E95, data, 020);	// S/C CNTL SCS
 					}
 					break;
 				case 13: //11DP13
@@ -1860,6 +1923,12 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 						showEvent( els_form->s11E225, data, 020);
 						showEvent( els_form->s11E227, data, 0100);
 					}
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E224, data, 010);	// TRANS CNTL +X CMD
+						showEvent( scs_form->s11E226, data, 040);	// TRANS CNTL -X CMD
+						showEvent( scs_form->s11E228, data, 0200);	// TRANS CNTL +Y CMD
+					}
 					break;
 				case 23: //11DP23
 					if ( els_form != NULL)
@@ -1869,11 +1938,34 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 						showEvent( els_form->s11E235, data, 020);
 						showEvent( els_form->s11E237, data, 0100);
 					}
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E236, data, 040);	// TRANS CNTL -Y CMD
+						showEvent( scs_form->s11E238, data, 0200);	// TRANS CNTL +Z CMD
+					}
 					break;
 				case 24: //11DP24
 					if ( els_form != NULL)
 					{
 						showEvent( els_form->s11E241, data, 01);
+					}
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E242, data, 02);	// TRANS CNTL -Z CMD
+						showEvent( scs_form->s11E243, data, 04);	// DIRECT RCS NO. 1
+						showEvent( scs_form->s11E244, data, 010);	// DIRECT RCS NO. 2
+					}
+					break;
+				case 25: //11DP25
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E251, data, 01);	// LIMIT CYCLE SWITCH
+						showEvent( scs_form->s11E253, data, 04);	// MANUAL PITCH ACCEL CMD
+						showEvent( scs_form->s11E254, data, 010);	// MANUAL PITCH MIN IMP CMD
+						showEvent( scs_form->s11E255, data, 020);	// MANUAL YAW ACCEL CMD
+						showEvent( scs_form->s11E256, data, 040);	// MANUAL YAW MIN IMP CMD
+						showEvent( scs_form->s11E257, data, 0100);	// MANUAL ROLL ACCEL CMD
+						showEvent( scs_form->s11E258, data, 0200);	// MANUAL ROLL MIN IMP CMD
 					}
 					break;
 				case 26: //11DP26
@@ -1904,6 +1996,48 @@ void Form1::display(unsigned char data, int channel, int type, int ccode)
 						showEvent( els_form->s11E303, data, 04);
 						showEvent( els_form->s11E306, data, 040);
 						showEvent( els_form->s11E308, data, 0200);
+					}
+					break;
+				case 33: //11DP33
+					if (scs_form != NULL)
+					{
+						showEvent( scs_form->s11E331, data, 01);	// BMAG MODE SW - ROLL ATT 1 RT 2
+						showEvent( scs_form->s11E332, data, 02);	// BMAG MODE SW - ROLL RATE 2
+						showEvent( scs_form->s11E333, data, 04);	// BMAG MODE SW - PITCH ATT 1 RT 2
+						showEvent( scs_form->s11E334, data, 010);	// BMAG MODE SW - PITCH RATE 2
+						showEvent( scs_form->s11E335, data, 020);	// BMAG MODE SW - YAW ATT 1 RT 2
+						showEvent( scs_form->s11E336, data, 040);	// BMAG MODE SW - YAW RATE 2
+					}
+					break;
+				}
+				break;
+			case 22:  // S22E
+				switch(ccode)
+				{
+				case 1: //22DP1
+					if (scs_form)
+					{
+						showEvent( scs_form->s22E11, data, 01);
+						showEvent( scs_form->s22E22, data, 02);
+						showEvent( scs_form->s22E33, data, 04);
+						showEvent( scs_form->s22E44, data, 010);
+						showEvent( scs_form->s22E55, data, 020);
+						showEvent( scs_form->s22E66, data, 040);
+						showEvent( scs_form->s22E77, data, 0100);
+						showEvent( scs_form->s22E88, data, 0200);
+					}
+					break;
+				case 2: //22DP2
+					if (scs_form)
+					{
+						showEvent( scs_form->s22E91, data, 01);
+						showEvent( scs_form->s22E102, data, 02);
+						showEvent( scs_form->s22E113, data, 04);
+						showEvent( scs_form->s22E124, data, 010);
+						showEvent( scs_form->s22E135, data, 020);
+						showEvent( scs_form->s22E146, data, 040);
+						showEvent( scs_form->s22E157, data, 0100);
+						showEvent( scs_form->s22E168, data, 0200);
 					}
 					break;
 				}
@@ -2114,10 +2248,16 @@ void Form1::parse_hbr(unsigned char data, int bytect){
 			break;
 
 		case 17: // 22DP1
+		case 49:
+		case 81:
+		case 113:
 			display( data, 22, TLM_DP, 1 );
 			break;
 
 		case 18: // 22DP2
+		case 50:
+		case 82:
+		case 114:
 			display( data, 22, TLM_DP, 2 );
 			break;
 
